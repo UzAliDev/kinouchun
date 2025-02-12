@@ -77,7 +77,7 @@ async def send_media(message: types.Message):
     
     number = int(message.text)
     try:
-        forwarded_message = await bot.forward_message(chat_id=message.chat.id, from_chat_id=VIDEO_CHANNEL, message_id=number)
+        forwarded_message = await bot.copy_message(chat_id=message.chat.id, from_chat_id=VIDEO_CHANNEL, message_id=number)
     except Exception as e:
         await message.answer("❌Kechirasiz, ushbu IDga mos video yoki kino topilmadi.\n\nIltimos, boshqa kino IDsini tekshirib qayta yuboring!.")
 
