@@ -11,7 +11,7 @@ import asyncio
 API_TOKEN = "7554779524:AAFNiA1LUAcYIIri6LTpw85HAimy32khYi4"
 CHANNEL_ID = "-1002268124166"  # Faqat raqamli ID ishlating
 Video = "@uzbek_bass_maniya"
-VIDEO_CHANNEL = "@VERSACE_BASS7"  # Videolar joylashgan kanal
+VIDEO_CHANNEL = -1002007433187  # Videolar joylashgan kanal
 ALLOWED_USER_ID = 5557587635 
 
 logging.basicConfig(level=logging.INFO)
