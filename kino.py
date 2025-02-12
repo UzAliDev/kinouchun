@@ -42,9 +42,14 @@ def get_subscribe_keyboard():
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 def add_user(user_id, first_name, username, join_date):
-    cursor.execute("INSERT OR IGNORE INTO users (user_id, first_name, username, join_date) VALUES (?, ?, ?, ?)",
-                   (user_id, first_name, username, join_date))
-    db.commit()
+    cursor.execute("SELECT user_id FROM users WHERE user_id = ?", (user_id,))
+    existing_user = cursor.fetchone()
+    if not existing_user:
+        cursor.execute("INSERT INTO users (user_id, first_name, username, join_date) VALUES (?, ?, ?, ?)",
+                       (user_id, first_name, username, join_date))
+        db.commit()
+        user_info = f"🆕 Yangi foydalanuvchi qo'shildi:\n\n🔹 ID: {user_id}\n🔹 Ism: {first_name}\n🔹 Username: @{username if username else 'Mavjud emas'}\n🔹 Qo‘shilgan sana: {join_date}"
+        asyncio.create_task(bot.send_message(ALLOWED_USER_ID, user_info))
 
 async def check_user_subscription(user_id):
     not_subscribed = []
