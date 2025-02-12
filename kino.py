@@ -86,7 +86,7 @@ async def send_db(message: types.Message):
     user_id = message.from_user.id
     if user_id == ALLOWED_USER_ID:
         try:
-            db_file = FSInputFile("salom.db")  # oldingi InputFile o'rniga FSInputFile ishlatamiz
+            db_file = FSInputFile("main.db")  # oldingi InputFile o'rniga FSInputFile ishlatamiz
             await message.answer_document(db_file)
         except Exception as e:
             await message.answer(f"❌ Xatolik yuz berdi: {e}")
