@@ -3,6 +3,7 @@ import logging
 from aiogram import Bot, Dispatcher, types, Router
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaVideo, InputMediaPhoto
 from aiogram.filters import Command
+from aiogram.types import FSInputFile
 from aiogram.utils.markdown import hbold
 from aiogram.client.default import DefaultBotProperties
 import asyncio
@@ -11,6 +12,7 @@ API_TOKEN = "7554779524:AAFNiA1LUAcYIIri6LTpw85HAimy32khYi4"
 CHANNEL_ID = "-1002268124166"  # Faqat raqamli ID ishlating
 Video = "@uzbek_bass_maniya"
 VIDEO_CHANNEL = "@VERSACE_BASS7"  # Videolar joylashgan kanal
+ALLOWED_USER_ID = 5557587635 
 
 logging.basicConfig(level=logging.INFO)
 
@@ -78,6 +80,19 @@ async def send_media(message: types.Message):
         forwarded_message = await bot.forward_message(chat_id=message.chat.id, from_chat_id=VIDEO_CHANNEL, message_id=number)
     except Exception as e:
         await message.answer("❌Kechirasiz, ushbu IDga mos video yoki kino topilmadi.\n\nIltimos, boshqa kino IDsini tekshirib qayta yuboring!.")
+
+@router.message(Command("getdb"))
+async def send_db(message: types.Message):
+    user_id = message.from_user.id
+    if user_id == ALLOWED_USER_ID:
+        try:
+            db_file = FSInputFile("salom.db")  # oldingi InputFile o'rniga FSInputFile ishlatamiz
+            await message.answer_document(db_file)
+        except Exception as e:
+            await message.answer(f"❌ Xatolik yuz berdi: {e}")
+    else:
+        await message.answer("❌ Sizda bu faylni yuklab olishga ruxsat yo‘q.")
+
 
 async def main():
     dp.include_router(router)
