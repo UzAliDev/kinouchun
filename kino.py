@@ -10,8 +10,7 @@ API_TOKEN = "7554779524:AAFNiA1LUAcYIIri6LTpw85HAimy32khYi4"
 CHANNELS = [
     {"id": "-1002268124166", "username": "https://t.me/uzbek_bass_maniya"},  # Kanal 1
     {"id": "-1002406777518", "username": "https://t.me/UzTopFilmlar"},
-    {"id": "-1002421755925", "username": "https://t.me/Fastxabarlar"},
-    {"id": "-1002306729898", "username": "https://t.me/+kgwjIiPt6UQ3YTZi"}# Kanal 2
+    {"id": "-1002421755925", "username": "https://t.me/Fastxabarlar"}# Kanal 2
 ]
 VIDEO_CHANNEL = -1002007433187  # Videolar joylashgan kanal
 ALLOWED_USER_ID = 5557587635 
